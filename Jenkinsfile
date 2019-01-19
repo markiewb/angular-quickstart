@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage ("NPM build") {
+            agent {
+                docker {
+                    image "node:8-alpine"
+                    //args "-v /dir:dir"
+                } 
+            }
+            steps {
+                echo "HELLOOOO"
+                sh "npm --version"
+                sh "npm build"
+                //https://github.com/markiewb/angular-quickstart.git
+            }
+        }
+    }
+}
