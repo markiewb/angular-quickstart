@@ -18,6 +18,9 @@ pipeline {
             steps {
                 echo "HELLOOOO"
                 sh "npm --version"
+                // download dependencies
+                sh "npm install"
+                //assemble
                 sh "ng build"
                 //https://github.com/markiewb/angular-quickstart.git
             }
