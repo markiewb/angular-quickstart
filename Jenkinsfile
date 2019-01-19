@@ -8,11 +8,6 @@ pipeline {
                     image "teracy/angular-cli"
                     // to use current directory
                     reuseNode true
-                    //args "-v .:/opt -w /opt"
-                    //args "-v $(pwd):/opt -w /opt"
-                    //args '-u root'
-                    //image "node:8-alpine"
-                    //args "-v /dir:dir"
                 } 
             }
             steps {
@@ -22,8 +17,24 @@ pipeline {
                 sh "npm install"
                 //assemble
                 sh "ng build"
-                //https://github.com/markiewb/angular-quickstart.git
             }
         }
+        stage ("NPM test") {
+            agent {
+                docker {
+                    image "teracy/angular-cli"
+                    // to use current directory
+                    reuseNode true
+                } 
+            }
+            steps {
+                sh "ng test"
+            }
+        }
+    }
+    post {
+      always {
+        archiveArtifacts artifacts: 'dist/**'
+      } 
     }
 }
