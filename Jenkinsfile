@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "HELLOOOO"
                 sh "npm --version"
-                sh "npm build"
+                sh "ng build"
                 //https://github.com/markiewb/angular-quickstart.git
             }
         }
