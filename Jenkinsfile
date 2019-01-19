@@ -5,7 +5,8 @@ pipeline {
         stage ("NPM build") {
             agent {
                 docker {
-                    image "node:8-alpine"
+                    image "teracy/angular-cli"
+                    //image "node:8-alpine"
                     //args "-v /dir:dir"
                 } 
             }
