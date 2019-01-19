@@ -6,8 +6,9 @@ pipeline {
             agent {
                 docker {
                     image "teracy/angular-cli"
+                    args "-v .:/opt -w /opt"
                     //args "-v $(pwd):/opt -w /opt"
-                    args '-u root'
+                    //args '-u root'
                     //image "node:8-alpine"
                     //args "-v /dir:dir"
                 } 
